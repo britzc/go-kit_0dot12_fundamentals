@@ -2,7 +2,9 @@ import os
 import shutil 
 import subprocess
 
-src = '.course/start/module05' 
+module_no = 5
+
+src = f'.course/start/module{module_no}' 
 dest = 'current'
 
 if os.path.exists("current") and os.path.isdir("current"):
