@@ -1,4 +1,4 @@
-package repos
+package main
 
 type ProductRepo struct {
 }

@@ -1,4 +1,4 @@
-package services_test
+package main_test
 
 import (
 	"pluralsight/go-kit_0dot12_fundamentals_m04/services"
