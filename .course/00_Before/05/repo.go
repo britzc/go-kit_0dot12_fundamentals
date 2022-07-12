@@ -1,14 +1,14 @@
 package main
 
-type ProductRepo struct {
+type productRepo struct {
 }
 
-func NewProductRepo() (pr *ProductRepo) {
-	pr = &ProductRepo{}
+func NewProductRepo() (pr *productRepo) {
+	pr = &productRepo{}
 
 	return pr
 }
 
-func (ProductRepo) FetchProductDetails(code string) (retailPrice, wholesalePrice float64, found bool) {
+func (productRepo) FetchProduct(code string) (retailPrice, wholesalePrice float64, found bool) {
 	return 0.0, 0.0, true
 }

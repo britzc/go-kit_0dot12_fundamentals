@@ -13,13 +13,13 @@ func main() {
 	)
 	flag.Parse()
 
-	productRepo := repos.NewProductRepo()
-	pricingService := services.NewPricingService(productRepo)
+	productRepo := NewProductRepo()
+	pricingService := NewPricingService(productRepo)
 
 	totalRetailPriceHandler := httptransport.NewServer(
-		endpoints.MakeTotalRetailPriceEndpoint(pricingService),
-		endpoints.DecodeTotalRetailPriceRequest,
-		endpoints.EncodeResponse,
+		MakeTotalRetailPriceEndpoint(pricingService),
+		DecodeTotalRetailPriceRequest,
+		EncodeResponse,
 	)
 
 	http.Handle("/retail", totalRetailPriceHandler)

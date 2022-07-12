@@ -1,15 +1,16 @@
-package main_test
+package main
 
 import (
-	"pluralsight/go-kit_0dot12_fundamentals_m04/services"
 	"strconv"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type MockProductRepo struct{}
 
-func (MockProductRepo) FetchProductDetails(code string) (retailPrice, wholesalePrice float64, found bool) {
+func (MockProductRepo) FetchProduct(code string) (retailPrice, wholesalePrice float64, found bool) {
 	data := []string{
 		"aaa111,12.99,10.99",
 		"bbb222,2.90,2.50",
@@ -31,7 +32,7 @@ func (MockProductRepo) FetchProductDetails(code string) (retailPrice, wholesaleP
 	return 0, 0, false
 }
 
-func Test_GetTotalRetailPrice(t *testing.T) {
+func Test_GetRetailTotal(t *testing.T) {
 	tests := []struct {
 		code  string
 		qty   int
@@ -41,13 +42,13 @@ func Test_GetTotalRetailPrice(t *testing.T) {
 		{
 			code:  "",
 			qty:   0,
-			err:   services.ErrInvalidCode,
+			err:   ErrInvalidCode,
 			total: 0.0,
 		},
 		{
 			code:  "aaa111",
 			qty:   0,
-			err:   services.ErrInvalidQty,
+			err:   ErrInvalidQty,
 			total: 0.0,
 		},
 		{
@@ -59,24 +60,19 @@ func Test_GetTotalRetailPrice(t *testing.T) {
 		{
 			code:  "fff000",
 			qty:   10,
-			err:   services.ErrNotFound,
+			err:   ErrNotFound,
 			total: 0.0,
 		},
 	}
 
 	mockProductRepo := new(MockProductRepo)
 
-	priceService := services.NewPricingService(mockProductRepo)
+	priceService := NewPricingService(mockProductRepo)
 
 	for id, test := range tests {
-		total, err := priceService.GetTotalRetailPrice(test.code, test.qty)
-		if err != test.err {
-			t.Errorf("Test #%d expected error: %s, not error %s", id, test.err, err)
-		}
-
-		if total != test.total {
-			t.Errorf("Test #%d expected total: %.2f, not total %.2f", id, test.total, total)
-		}
+		total, err := priceService.GetRetailTotal(test.code, test.qty)
+		assert.True(t, test.err == err, "~2|Test #%d expected error: %s, not error %s~", id, test.err, err)
+		assert.True(t, test.total == total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, test.total, total)
 	}
 }
 

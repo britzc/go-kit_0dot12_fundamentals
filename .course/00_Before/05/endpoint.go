@@ -9,7 +9,7 @@ import (
 )
 
 type PricingService interface {
-	GetTotalRetailPrice(code string, qty int) (total float64, err error)
+	GetRetailTotal(code string, qty int) (total float64, err error)
 }
 
 type totalRetailPriceRequest struct {
@@ -25,7 +25,7 @@ type totalRetailPriceResponse struct {
 func MakeTotalRetailPriceEndpoint(ps PricingService) endpoint.Endpoint {
 	return func(_ context.Context, request interface{}) (interface{}, error) {
 		req := request.(totalRetailPriceRequest)
-		total, err := ps.GetTotalRetailPrice(req.Code, req.Qty)
+		total, err := ps.GetRetailTotal(req.Code, req.Qty)
 		if err != nil {
 			return totalRetailPriceResponse{total, err.Error()}, nil
 		}
