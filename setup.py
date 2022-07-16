@@ -1,21 +1,49 @@
+#!/usr/bin/python
+
+import getopt
 import os
 import shutil 
 import subprocess
+import sys
 
-module_no = '05'
+def main(argv):
+    module = '00'
 
-src = f'.course/00_before/{module_no}' 
-dest = 'current'
+    try:
+        opts, args = getopt.getopt(argv,"hm:",["module="])
+    except getopt.GetoptError:
+        print('test.py -m <module>')
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            print('test.py -m <module>')
+            sys.exit()
+        elif opt in ("-m", "--module"):
+            module = arg.rjust(2, '0')
 
-if os.path.exists('current') and os.path.isdir('current'):
-    shutil.rmtree('current')   
-    
-shutil.copytree(src, dest) 
+    if module == '00':
+        print(f'Invalid module number specified')
+        print('test.py -m <module>')
+        sys.exit()
 
-p = subprocess.Popen(['go', 'mod', 'init'], cwd='current')
-p.wait()
+    print(f'Setting up module {module} in "current" directory')
 
-p = subprocess.Popen(['go', 'mod', 'tidy'], cwd='current')
-p.wait()
+    src = f'.course/00_before/{module}' 
+    dest = 'current'
 
-print('Transfer completed to "current" directory.')
+    if os.path.exists('current') and os.path.isdir('current'):
+        shutil.rmtree('current')   
+        
+    shutil.copytree(src, dest) 
+
+    # p = subprocess.Popen(['go', 'mod', 'init'], cwd='current')
+    # p.wait()
+
+    p = subprocess.Popen(['go', 'mod', 'tidy'], cwd='current')
+    p.wait()
+
+    print(f'Completed setup of module {module} in "current" directory')
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
