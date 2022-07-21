@@ -24,8 +24,7 @@ func NewPricingService(pr ProductRepo) (ps *service) {
 	return ps
 }
 
-func (ps *service) GetRetailTotal(code string,
-	qty int) (float64, error) {
+func (ps *service) GetRetailTotal(code string, qty int) (total float64, err error) {
 	if code == "" {
 		return 0.0, ErrInvalidCode
 	}

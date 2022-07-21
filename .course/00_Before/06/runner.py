@@ -12,7 +12,7 @@ if stderr:
     r = re.compile("(.*\.go):(\d+):\d+:(.*)", re.MULTILINE)
     filename, line, message = r.search(stderr.decode("utf-8")).groups()
 
-    print(f"Hmm, looks like there is an error in `{filename}` on line `{line}`: {message.strip()} <fail>")
+    print(f"Hmm, it looks like there is an error in `{filename}` on line `{line}`: {message.strip()} <fail>")
 
 if stdout:
     failed = re.compile("(?:\w+\.go:\d+|Messages):\s*~\d+\|(.*)~", re.MULTILINE)
