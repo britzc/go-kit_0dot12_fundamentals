@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 
-	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/gorilla/mux"
 )
 
@@ -26,11 +25,7 @@ func main() {
 	fmt.Println("Endpoints and handlers: In progress")
 	pricingService := NewPricingService(productRepo)
 
-	totalRetailPriceHandler := httptransport.NewServer(
-		MakeTotalRetailPriceEndpoint(pricingService),
-		DecodeTotalRetailPriceRequest,
-		EncodeResponse,
-	)
+	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(pricingService)
 
 	rtr := mux.NewRouter().StrictSlash(true)
 	rtr.Handle("/retail", totalRetailPriceHandler).Methods("POST")

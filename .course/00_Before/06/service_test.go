@@ -76,6 +76,7 @@ func Test_GetRetailTotal(t *testing.T) {
 	}
 }
 
+/*
 func Test_GetWholesaleTotal(t *testing.T) {
 	tests := []struct {
 		code  string
@@ -117,56 +118,6 @@ func Test_GetWholesaleTotal(t *testing.T) {
 		total, err := priceService.GetWholesaleTotal(test.code, test.qty)
 		assert.True(t, test.err == err, "~2|Test #%d expected error: %s, not error %s~", id, test.err, err)
 		assert.True(t, test.total == total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, test.total, total)
-	}
-}
-
-/*
-func Test_GetTotalWholesalePrice(t *testing.T) {
-	tests := []struct {
-		code  string
-		qty   int
-		err   error
-		total float64
-	}{
-		{
-			code:  "",
-			qty:   0,
-			err:   services.ErrInvalidCode,
-			total: 0.0,
-		},
-		{
-			code:  "bbb222",
-			qty:   0,
-			err:   services.ErrInvalidQty,
-			total: 0.0,
-		},
-		{
-			code:  "bbb222",
-			qty:   15,
-			err:   nil,
-			total: 43.50,
-		},
-		{
-			code:  "xxx999",
-			qty:   10,
-			err:   services.ErrNotFound,
-			total: 0.0,
-		},
-	}
-
-	mockProductRepo := new(MockProductRepo)
-
-	priceService := services.NewPricingService(mockProductRepo)
-
-	for id, test := range tests {
-		total, err := priceService.GetTotalWholesalePrice(test.code, test.qty)
-		if err != test.err {
-			t.Errorf("Test #%d expected error: %s, not error %s", id, test.err, err)
-		}
-
-		if total != test.total {
-			t.Errorf("Test #%d expected total: %.2f, not total %.2f", id, test.total, total)
-		}
 	}
 }
 */
