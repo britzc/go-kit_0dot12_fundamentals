@@ -16,7 +16,7 @@ func main() {
 	flag.Parse()
 
 	fmt.Println("Repository: In progress")
-	productRepo, err := NewProductRepo("data.csv")
+	productRepo, err := NewProductRepo("products.csv", "partners.csv")
 	if err != nil {
 		log.Fatal(err)
 	}

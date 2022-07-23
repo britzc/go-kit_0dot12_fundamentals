@@ -10,11 +10,11 @@ import (
 
 type MockProductRepo struct{}
 
-func (MockProductRepo) FetchProduct(code string) (retailPrice, wholesalePrice float64, found bool) {
+func (MockProductRepo) FetchPrice(code string) (price float64, found bool) {
 	data := []string{
-		"aaa111,12.99,10.99",
-		"bbb222,2.90,2.50",
-		"ccc333,22.50,21.00",
+		"aaa111,12.99",
+		"bbb222,2.90",
+		"ccc333,22.50",
 	}
 
 	for _, line := range data {
@@ -23,13 +23,32 @@ func (MockProductRepo) FetchProduct(code string) (retailPrice, wholesalePrice fl
 			continue
 		}
 
-		retailPrice, _ = strconv.ParseFloat(parts[1], 64)
-		wholesalePrice, _ = strconv.ParseFloat(parts[2], 64)
+		price, _ = strconv.ParseFloat(parts[1], 64)
 
-		return retailPrice, wholesalePrice, true
+		return price, true
 	}
 
-	return 0, 0, false
+	return 0, false
+}
+
+func (MockProductRepo) FetchDiscount(partner string) (discount float64, found bool) {
+	data := []string{
+		"abc,0.10",
+		"def,0.05",
+	}
+
+	for _, line := range data {
+		parts := strings.Split(line, ",")
+		if parts[0] != partner {
+			continue
+		}
+
+		discount, _ = strconv.ParseFloat(parts[1], 64)
+
+		return discount, true
+	}
+
+	return 0, false
 }
 
 func Test_GetRetailTotal(t *testing.T) {

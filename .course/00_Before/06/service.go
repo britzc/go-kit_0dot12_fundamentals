@@ -5,7 +5,8 @@ import (
 )
 
 type ProductRepo interface {
-	FetchProduct(code string) (retailPrice, wholesalePrice float64, found bool)
+	FetchPrice(code string) (price float64, found bool)
+	FetchDiscount(partner string) (discount float64, found bool)
 }
 
 var ErrInvalidCode = errors.New("Invalid Code Requested")
@@ -32,7 +33,7 @@ func (ps *service) GetRetailTotal(code string, qty int) (total float64, err erro
 		return 0.0, ErrInvalidQty
 	}
 
-	price, _, found := ps.repo.FetchProduct(code)
+	price, found := ps.repo.FetchPrice(code)
 	if !found {
 		return 0.0, ErrNotFound
 	}
