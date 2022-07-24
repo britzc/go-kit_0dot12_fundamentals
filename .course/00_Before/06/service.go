@@ -11,10 +11,10 @@ type ProductRepo interface {
 }
 
 var ErrInvalidPartner = errors.New("Invalid Partner Requested")
-var ErrInvalidCode = errors.New("Invalid Code Requested")
-var ErrInvalidQty = errors.New("Invalid Quantity Requested")
-var ErrCodeNotFound = errors.New("Code Not Found")
 var ErrPartnerNotFound = errors.New("Partner Not Found")
+var ErrInvalidCode = errors.New("Invalid Code Requested")
+var ErrCodeNotFound = errors.New("Code Not Found")
+var ErrInvalidQty = errors.New("Invalid Quantity Requested")
 
 type service struct {
 	repo ProductRepo
@@ -42,6 +42,39 @@ func (ps *service) GetRetailTotal(code string, qty int) (total float64, err erro
 	}
 
 	total = price * float64(qty)
+
+	return math.Round(total*100) / 100, nil
+}
+
+/*
+Discount Calculation:
+saved = (price x discount)
+total = (price - saved) x quantity
+*/
+
+func (ps *service) GetWholesaleTotal(partner, code string, qty int) (total float64, err error) {
+	if partner == "" {
+		return 0.0, ErrInvalidPartner
+	}
+	if code == "" {
+		return 0.0, ErrInvalidCode
+	}
+	if qty <= 0 {
+		return 0.0, ErrInvalidQty
+	}
+
+	price, found := ps.repo.FetchPrice(code)
+	if !found {
+		return 0.0, ErrCodeNotFound
+	}
+
+	discount, found := ps.repo.FetchDiscount(partner)
+	if !found {
+		return 0.0, ErrPartnerNotFound
+	}
+
+	saved := (price * discount)
+	total = (price - saved) * float64(qty)
 
 	return math.Round(total*100) / 100, nil
 }

@@ -9,6 +9,10 @@ import (
 	httptransport "github.com/go-kit/kit/transport/http"
 )
 
+const (
+	INVALID_REQUEST = "Invalid Request"
+)
+
 type errorResponse struct {
 	Err string `json:"err, omitEmpty"`
 }
@@ -42,7 +46,7 @@ func MakeTotalRetailPriceHttpHandler(pricingService PricingService) *httptranspo
 func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	var request totalRetailPriceRequest
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, &errorResponse{Err: "Invalid Request"}
+		return nil, &errorResponse{Err: INVALID_REQUEST}
 	}
 
 	return request, nil

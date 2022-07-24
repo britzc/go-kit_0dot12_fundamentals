@@ -1,16 +1,65 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
-	"log"
-	"net/http"
-	"net/http/httptest"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
+func Test_TotalRetailPriceRequest(t *testing.T) {
+	tests := []struct {
+		input    totalRetailPriceRequest
+		expected totalRetailPriceRequest
+	}{
+		{
+			input:    totalRetailPriceRequest{Code: "test", Qty: 0},
+			expected: totalRetailPriceRequest{Code: "test", Qty: 0},
+		},
+		{
+			input:    totalRetailPriceRequest{Code: "", Qty: 12},
+			expected: totalRetailPriceRequest{Code: "", Qty: 12},
+		},
+	}
+
+	for id, test := range tests {
+		data, _ := json.Marshal(test.input)
+
+		var actual totalRetailPriceRequest
+		json.Unmarshal(data, &actual)
+
+		assert.True(t, test.expected.Code == actual.Code, "~2|Test #%d expected code: %s, not code %s~", id, test.expected.Code, actual.Code)
+		assert.True(t, test.expected.Qty == actual.Qty, "~2|Test #%d expected qty: %d, not qty %d~", id, test.expected.Qty, actual.Qty)
+	}
+}
+
+func Test_TotalRetailPriceResponse(t *testing.T) {
+	tests := []struct {
+		input    totalRetailPriceResponse
+		expected totalRetailPriceResponse
+	}{
+		{
+			input:    totalRetailPriceResponse{Total: 100.99},
+			expected: totalRetailPriceResponse{Total: 100.99},
+		},
+		{
+			input:    totalRetailPriceResponse{Total: 0.0, Err: "test"},
+			expected: totalRetailPriceResponse{Total: 0.0, Err: "test"},
+		},
+	}
+
+	for id, test := range tests {
+		data, _ := json.Marshal(test.input)
+
+		var actual totalRetailPriceResponse
+		json.Unmarshal(data, &actual)
+
+		assert.True(t, test.expected.Total == actual.Total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, test.expected.Total, actual.Total)
+		assert.True(t, test.expected.Err == actual.Err, "~2|Test #%d expected err: %s, not err %s~", id, test.expected.Err, actual.Err)
+	}
+}
+
+/*
 func Test_MakeTotalRetailPricendpoint(t *testing.T) {
 	tests := []struct {
 		request  interface{}
@@ -63,3 +112,4 @@ func Test_MakeTotalRetailPricendpoint(t *testing.T) {
 		assert.True(t, testResponse.Total == actualResponse.Total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, testResponse.Total, actualResponse.Total)
 	}
 }
+*/
