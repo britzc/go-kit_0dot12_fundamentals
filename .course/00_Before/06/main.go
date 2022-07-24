@@ -16,15 +16,17 @@ func main() {
 	flag.Parse()
 
 	fmt.Println("Repository: In progress")
+
 	productRepo, err := NewProductRepo("products.csv", "partners.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	fmt.Println("Repository: Ready")
 
 	fmt.Println("Endpoints and handlers: In progress")
-	pricingService := NewPricingService(productRepo)
 
+	pricingService := NewPricingService(productRepo)
 	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(pricingService)
 
 	rtr := mux.NewRouter().StrictSlash(true)

@@ -69,8 +69,8 @@ func Test_MakeTotalRetailPriceEndpoint(t *testing.T) {
 
 	totalRetailPriceHandler := httptransport.NewServer(
 		MakeTotalRetailPriceEndpoint(mockPricingService),
-		DecodeTotalRetailPriceRequest,
-		EncodeResponse,
+		decodeTotalRetailPriceRequest,
+		encodeResponse,
 	)
 
 	server := httptest.NewServer(totalRetailPriceHandler)

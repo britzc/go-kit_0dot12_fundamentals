@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -11,71 +11,55 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_DecodeTotalRetailPriceRequest(t *testing.T) {
+func Test_MakeTotalRetailPricendpoint(t *testing.T) {
 	tests := []struct {
-		request interface{}
-		err     error
-	}{
-		{
-			request: totalRetailPriceRequest{Code: "aaa111", Qty: 15},
-			err:     nil,
-		},
-		{
-			request: "test",
-			err:     ErrInvalidRequest,
-		},
-	}
-
-	for id, test := range tests {
-		testJson, _ := json.Marshal(test.request)
-		testBody := bytes.NewReader(testJson)
-		r, _ := http.NewRequest(http.MethodPost, "/resource", testBody)
-
-		decodeResult, err := DecodeTotalRetailPriceRequest(nil, r)
-		assert.True(t, test.err == err, "~2|Test #%d expected error: %s, not error %s~", id, test.err, err)
-		if err == nil {
-			actualReq := decodeResult.(totalRetailPriceRequest)
-
-			testReq := test.request.(totalRetailPriceRequest)
-
-			assert.True(t, testReq.Code == actualReq.Code, "~2|Test #%d expected code: %s, not code %s~", id, testReq.Code, actualReq.Code)
-			assert.True(t, testReq.Qty == actualReq.Qty, "~2|Test #%d expected qty: %.2f, not qty %.2f~", id, testReq.Qty, actualReq.Qty)
-		}
-	}
-}
-
-func Test_Encode(t *testing.T) {
-	tests := []struct {
+		request  interface{}
 		response interface{}
-		err      error
 	}{
 		{
-			response: totalRetailPriceResponse{Total: 100.99, Err: ""},
-			err:      nil,
+			request:  totalRetailPriceRequest{Code: "", Qty: 0},
+			response: totalRetailPriceResponse{Err: "Invalid Code Requested"},
+		},
+		{
+			request:  totalRetailPriceRequest{Code: "aaa111", Qty: 0},
+			response: totalRetailPriceResponse{Err: "Invalid Quantity Requested"},
+		},
+		{
+			request:  totalRetailPriceRequest{Code: "aaa111", Qty: 15},
+			response: totalRetailPriceResponse{Total: 194.85},
+		},
+		{
+			request:  totalRetailPriceRequest{Code: "fff000", Qty: 10},
+			response: totalRetailPriceResponse{Err: "Product Not Found"},
+		},
+		{
+			request:  "test",
+			response: totalRetailPriceResponse{Err: "Invalid Request"},
 		},
 	}
 
+	mockPricingService := new(MockPricingService)
+
+	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(mockPricingService)
+
+	server := httptest.NewServer(totalRetailPriceHandler)
+	defer server.Close()
+
 	for id, test := range tests {
-		w := httptest.NewRecorder()
+		postBody, _ := json.Marshal(test.request)
 
-		err := EncodeResponse(nil, w, test.response)
-		assert.True(t, test.err == err, "~2|Test #%d expected error: %s, not error %s~", id, test.err, err)
-		if err == nil {
-			res := w.Result()
-			defer res.Body.Close()
-
-			data, err := ioutil.ReadAll(res.Body)
-			if err != nil {
-				t.Errorf("expected error to be nil got %v", err)
-			}
-
-			var actualRes totalRetailPriceResponse
-			json.Unmarshal(data, &actualRes)
-
-			testRes := test.response.(totalRetailPriceResponse)
-
-			assert.True(t, testRes.Err == actualRes.Err, "~2|Test #%d expected error: %s, not error %s~", id, testRes.Err, actualRes.Err)
-			assert.True(t, testRes.Total == actualRes.Total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, testRes.Total, actualRes.Total)
+		responseBody := bytes.NewBuffer(postBody)
+		resp, err := http.Post(server.URL, "application/json", responseBody)
+		if err != nil {
+			log.Fatalf("An Error Occured %v", err)
 		}
+
+		var actualResponse totalRetailPriceResponse
+		json.NewDecoder(resp.Body).Decode(&actualResponse)
+
+		testResponse := test.response.(totalRetailPriceResponse)
+
+		assert.True(t, testResponse.Err == actualResponse.Err, "~2|Test #%d expected error: %s, not error %s~", id, testResponse.Err, actualResponse.Err)
+		assert.True(t, testResponse.Total == actualResponse.Total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, testResponse.Total, actualResponse.Total)
 	}
 }

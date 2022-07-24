@@ -3,13 +3,23 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"errors"
+	"fmt"
 	"net/http"
 
 	httptransport "github.com/go-kit/kit/transport/http"
 )
 
-var ErrInvalidRequest = errors.New("Invalid Request")
+type errorResponse struct {
+	Err string `json:"err, omitEmpty"`
+}
+
+func (e *errorResponse) Error() string {
+	return e.Err
+}
+
+func (e *errorResponse) MarshalJSON() ([]byte, error) {
+	return []byte(fmt.Sprintf(`{"err":"%s"}`, e.Err)), nil
+}
 
 type totalRetailPriceRequest struct {
 	Code string `json:"code"`
@@ -24,20 +34,20 @@ type totalRetailPriceResponse struct {
 func MakeTotalRetailPriceHttpHandler(pricingService PricingService) *httptransport.Server {
 	return httptransport.NewServer(
 		MakeTotalRetailPriceEndpoint(pricingService),
-		DecodeTotalRetailPriceRequest,
-		EncodeResponse,
+		decodeTotalRetailPriceRequest,
+		encodeResponse,
 	)
 }
 
-func DecodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
+func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	var request totalRetailPriceRequest
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, ErrInvalidRequest
+		return nil, &errorResponse{Err: "Invalid Request"}
 	}
 
 	return request, nil
 }
 
-func EncodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
+func encodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
 	return json.NewEncoder(w).Encode(response)
 }
