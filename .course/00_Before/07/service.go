@@ -51,3 +51,30 @@ Discount Calculation:
 saved = (price x discount)
 total = (price - saved) x quantity
 */
+
+func (ps *service) GetWholesaleTotal(partner, code string, qty int) (total float64, err error) {
+	if partner == "" {
+		return 0.0, ErrInvalidPartner
+	}
+	if code == "" {
+		return 0.0, ErrInvalidCode
+	}
+	if qty <= 0 {
+		return 0.0, ErrInvalidQty
+	}
+
+	price, found := ps.repo.FetchPrice(code)
+	if !found {
+		return 0.0, ErrCodeNotFound
+	}
+
+	discount, found := ps.repo.FetchDiscount(partner)
+	if !found {
+		return 0.0, ErrPartnerNotFound
+	}
+
+	saved := (price * discount)
+	total = (price - saved) * float64(qty)
+
+	return math.Round(total*100) / 100, nil
+}
