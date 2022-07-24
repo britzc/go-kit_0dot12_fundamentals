@@ -172,3 +172,64 @@ func Test_TotalWholesalePriceResponse(t *testing.T) {
 		assert.True(t, test.expected.Err == actual.Err, "~2|Test #%d expected err: %s, not err %s~", id, test.expected.Err, actual.Err)
 	}
 }
+
+func Test_MakeTotalWholesalePriceHttpHandler(t *testing.T) {
+	tests := []struct {
+		request  interface{}
+		response interface{}
+	}{
+		{
+			request:  totalWholesalePriceRequest{Partner: "", Code: "aaa111", Qty: 0},
+			response: totalWholesalePriceResponse{Err: "Invalid Partner Requested"},
+		},
+		{
+			request:  totalWholesalePriceRequest{Partner: "superstore", Code: "", Qty: 0},
+			response: totalWholesalePriceResponse{Err: "Invalid Code Requested"},
+		},
+		{
+			request:  totalWholesalePriceRequest{Partner: "superstore", Code: "aaa111", Qty: 0},
+			response: totalWholesalePriceResponse{Err: "Invalid Quantity Requested"},
+		},
+		{
+			request:  totalWholesalePriceRequest{Partner: "superstore", Code: "aaa111", Qty: 15},
+			response: totalWholesalePriceResponse{Total: 165.62},
+		},
+		{
+			request:  totalWholesalePriceRequest{Partner: "test", Code: "aaa111", Qty: 10},
+			response: totalWholesalePriceResponse{Err: "Partner Not Found"},
+		},
+		{
+			request:  totalWholesalePriceRequest{Partner: "superstore", Code: "fff000", Qty: 10},
+			response: totalWholesalePriceResponse{Err: "Code Not Found"},
+		},
+		{
+			request:  "test",
+			response: totalWholesalePriceResponse{Err: "Invalid Request"},
+		},
+	}
+
+	mockPricingService := new(MockPricingService)
+
+	totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(mockPricingService)
+
+	server := httptest.NewServer(totalWholesalePriceHandler)
+	defer server.Close()
+
+	for id, test := range tests {
+		postBody, _ := json.Marshal(test.request)
+
+		responseBody := bytes.NewBuffer(postBody)
+		resp, err := http.Post(server.URL, "application/json", responseBody)
+		if err != nil {
+			log.Fatalf("An Error Occured %v", err)
+		}
+
+		var actualResponse totalWholesalePriceResponse
+		json.NewDecoder(resp.Body).Decode(&actualResponse)
+
+		testResponse := test.response.(totalWholesalePriceResponse)
+
+		assert.True(t, testResponse.Err == actualResponse.Err, "~2|Test #%d expected error: %s, not error %s~", id, testResponse.Err, actualResponse.Err)
+		assert.True(t, testResponse.Total == actualResponse.Total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, testResponse.Total, actualResponse.Total)
+	}
+}

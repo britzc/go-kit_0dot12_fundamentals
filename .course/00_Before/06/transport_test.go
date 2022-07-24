@@ -1,7 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
+	"log"
+	"net/http"
+	"net/http/httptest"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -59,8 +63,7 @@ func Test_TotalRetailPriceResponse(t *testing.T) {
 	}
 }
 
-/*
-func Test_MakeTotalRetailPricendpoint(t *testing.T) {
+func Test_MakeTotalRetailPriceHttpHandler(t *testing.T) {
 	tests := []struct {
 		request  interface{}
 		response interface{}
@@ -112,4 +115,3 @@ func Test_MakeTotalRetailPricendpoint(t *testing.T) {
 		assert.True(t, testResponse.Total == actualResponse.Total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, testResponse.Total, actualResponse.Total)
 	}
 }
-*/
