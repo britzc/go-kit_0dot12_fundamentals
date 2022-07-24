@@ -45,3 +45,30 @@ func (ps *service) GetRetailTotal(code string, qty int) (total float64, err erro
 
 	return math.Round(total*100) / 100, nil
 }
+
+func (ps *service) GetWholesaleTotal(partner, code string, qty int) (total float64, err error) {
+	if partner == "" {
+		return 0.0, ErrInvalidPartner
+	}
+	if code == "" {
+		return 0.0, ErrInvalidCode
+	}
+	if qty <= 0 {
+		return 0.0, ErrInvalidQty
+	}
+
+	price, found := ps.repo.FetchPrice(code)
+	if !found {
+		return 0.0, ErrCodeNotFound
+	}
+
+	discount, found := ps.repo.FetchDiscount(partner)
+	if !found {
+		return 0.0, ErrPartnerNotFound
+	}
+
+	discountVal := price * discount
+	total = (price - discountVal) * float64(qty)
+
+	return math.Round(total*100) / 100, nil
+}
