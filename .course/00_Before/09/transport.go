@@ -78,13 +78,13 @@ func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (inter
 	return request, nil
 }
 
-func MakeTotalWholesalePriceHttpHandler(pricingService PricingService) *httptransport.Server {
-	return httptransport.NewServer(
-		MakeTotalWholesalePriceEndpoint(pricingService),
-		decodeTotalWholesalePriceRequest,
-		encodeResponse,
-	)
-}
+// func MakeTotalWholesalePriceHttpHandler(pricingService PricingService) *httptransport.Server {
+// 	return httptransport.NewServer(
+// 		MakeTotalWholesalePriceEndpoint(pricingService),
+// 		decodeTotalWholesalePriceRequest,
+// 		encodeResponse,
+// 	)
+// }
 
 // GENERIC OBJECTS & HANDLERS
 

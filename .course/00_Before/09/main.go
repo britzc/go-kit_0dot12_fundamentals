@@ -27,12 +27,14 @@ func main() {
 	fmt.Println("Endpoints and handlers: In progress")
 
 	pricingService := NewPricingService(productRepo)
-	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(pricingService)
-	totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(pricingService)
 
 	rtr := mux.NewRouter().StrictSlash(true)
-	rtr.Handle("/retail", totalRetailPriceHandler).Methods("POST")
-	rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods("POST")
+
+	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(pricingService)
+	rtr.Handle("/retail", totalRetailPriceHandler).Methods(http.MethodPost)
+
+	// totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(pricingService)
+	// rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods("POST")
 
 	fmt.Println("Endpoints and handlers: Ready")
 
