@@ -48,9 +48,9 @@ func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interfac
 	return request, nil
 }
 
-func MakeTotalRetailPriceHttpHandler(pricingService PricingService) *httptransport.Server {
+func MakeTotalRetailPriceHttpHandler(svc PricingService) *httptransport.Server {
 	return httptransport.NewServer(
-		MakeTotalRetailPriceEndpoint(pricingService),
+		MakeTotalRetailPriceEndpoint(svc),
 		decodeTotalRetailPriceRequest,
 		encodeResponse,
 	)
@@ -67,6 +67,23 @@ type totalWholesalePriceRequest struct {
 type totalWholesalePriceResponse struct {
 	Total float64 `json:"total"`
 	Err   string  `json:"err,omitempty"`
+}
+
+func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var request totalWholesalePriceRequest
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		return nil, &errorResponse{Err: INVALID_REQUEST}
+	}
+
+	return request, nil
+}
+
+func MakeTotalWholesalePriceHttpHandler(svc PricingService) *httptransport.Server {
+	return httptransport.NewServer(
+		MakeTotalWholesalePriceEndpoint(svc),
+		decodeTotalWholesalePriceRequest,
+		encodeResponse,
+	)
 }
 
 // GENERIC OBJECTS & HANDLERS

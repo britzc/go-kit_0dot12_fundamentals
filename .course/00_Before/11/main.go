@@ -3,10 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
+
+	"github.com/go-kit/kit/log"
 )
 
 func main() {
@@ -15,23 +17,28 @@ func main() {
 	)
 	flag.Parse()
 
+	logger := log.NewLogfmtLogger(os.Stderr)
+
 	fmt.Println("Repository: In progress")
 
-	productRepo, err := NewProductRepo("products.csv", "partners.csv")
-	if err != nil {
-		log.Fatal(err)
-	}
+	productRepo, _ := NewProductRepo("products.csv", "partners.csv")
 
 	fmt.Println("Repository: Ready")
 
 	fmt.Println("Endpoints and handlers: In progress")
 
-	pricingService := NewPricingService(productRepo)
+	var svc PricingService
+	svc = NewPricingService(productRepo)
+	svc = NewLoggingMiddleware(logger, svc)
 
 	rtr := mux.NewRouter().StrictSlash(true)
 
-	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(pricingService)
+	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(svc)
+
 	rtr.Handle("/retail", totalRetailPriceHandler).Methods(http.MethodPost)
+
+	totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(svc)
+	rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods(http.MethodPost)
 
 	fmt.Println("Endpoints and handlers: Ready")
 
