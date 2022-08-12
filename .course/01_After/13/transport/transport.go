@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/britzc/go-kit_0dot12_fundamentals/current/endpoint"
-	"github.com/britzc/go-kit_0dot12_fundamentals/current/payload"
 	gkendpoint "github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/go-kit/log"
@@ -16,15 +14,10 @@ const (
 	INVALID_REQUEST = "Invalid Request"
 )
 
-type PricingService interface {
-	GetRetailTotal(code string, qty int) (total float64, err error)
-	GetWholesaleTotal(partner, code string, qty int) (total float64, err error)
-}
-
 func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request payload.TotalRetailPriceRequest
+	var request TotalRetailPriceRequest
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, &payload.ErrorResponse{Err: INVALID_REQUEST}
+		return nil, &ErrorResponse{Err: INVALID_REQUEST}
 	}
 
 	return request, nil
@@ -32,8 +25,8 @@ func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interfac
 
 func MakeTotalRetailPriceHttpHandler(logger log.Logger, svc PricingService) *httptransport.Server {
 	var retailEndpoint gkendpoint.Endpoint
-	retailEndpoint = endpoint.MakeTotalRetailPriceEndpoint(svc)
-	retailEndpoint = LoggingMiddleware(log.With(logger, "method", "MakeTotalRetailPriceHandler"))(retailEndpoint)
+	retailEndpoint = MakeTotalRetailPriceEndpoint(svc)
+	retailEndpoint = LogTotalRetailPriceEndpoint(log.With(logger, "service", "PricingService"))(retailEndpoint)
 
 	return httptransport.NewServer(
 		retailEndpoint,
@@ -43,9 +36,9 @@ func MakeTotalRetailPriceHttpHandler(logger log.Logger, svc PricingService) *htt
 }
 
 func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request payload.TotalWholesalePriceRequest
+	var request TotalWholesalePriceRequest
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, &payload.ErrorResponse{Err: INVALID_REQUEST}
+		return nil, &ErrorResponse{Err: INVALID_REQUEST}
 	}
 
 	return request, nil
@@ -53,8 +46,8 @@ func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (inter
 
 func MakeTotalWholesalePriceHttpHandler(logger log.Logger, svc PricingService) *httptransport.Server {
 	var wholesaleEndpoint gkendpoint.Endpoint
-	wholesaleEndpoint = endpoint.MakeTotalWholesalePriceEndpoint(svc)
-	wholesaleEndpoint = LoggingMiddleware(log.With(logger, "method", "MakeTotalWholesalePriceHandler"))(wholesaleEndpoint)
+	wholesaleEndpoint = MakeTotalWholesalePriceEndpoint(svc)
+	wholesaleEndpoint = LogTotalWholesalePriceEndpoint(log.With(logger, "service", "PricingService"))(wholesaleEndpoint)
 
 	return httptransport.NewServer(
 		wholesaleEndpoint,

@@ -31,10 +31,11 @@ def main(argv):
     src = f'.course/00_before/{module}' 
     dest = 'current'
 
-    if os.path.exists('current') and os.path.isdir('current'):
-        shutil.rmtree('current')   
+    if os.path.exists(dest) and os.path.isdir(dest):
+        shutil.rmtree(dest)   
         
     shutil.copytree(src, dest) 
+    shutil.copy('runner.py', 'current/.')
 
     # p = subprocess.Popen(['go', 'mod', 'init'], cwd='current')
     # p.wait()

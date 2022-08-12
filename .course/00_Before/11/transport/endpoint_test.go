@@ -1,8 +1,7 @@
-package endpoint
+package transport
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
 	"errors"
 	"log"
@@ -13,13 +12,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/britzc/go-kit_0dot12_fundamentals/current/payload"
 	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/stretchr/testify/assert"
-)
-
-const (
-	INVALID_REQUEST = "Invalid Request"
 )
 
 var (
@@ -116,24 +110,24 @@ func (MockPricingService) GetWholesaleTotal(partner, code string, qty int) (tota
 
 func Test_MakeTotalRetailPriceEndpoint(t *testing.T) {
 	tests := []struct {
-		request  payload.TotalRetailPriceRequest
-		response payload.TotalRetailPriceResponse
+		request  TotalRetailPriceRequest
+		response TotalRetailPriceResponse
 	}{
 		{
-			request:  payload.TotalRetailPriceRequest{Code: "", Qty: 0},
-			response: payload.TotalRetailPriceResponse{Err: "Invalid Code Requested"},
+			request:  TotalRetailPriceRequest{Code: "", Qty: 0},
+			response: TotalRetailPriceResponse{Err: "Invalid Code Requested"},
 		},
 		{
-			request:  payload.TotalRetailPriceRequest{Code: "aaa111", Qty: 0},
-			response: payload.TotalRetailPriceResponse{Err: "Invalid Quantity Requested"},
+			request:  TotalRetailPriceRequest{Code: "aaa111", Qty: 0},
+			response: TotalRetailPriceResponse{Err: "Invalid Quantity Requested"},
 		},
 		{
-			request:  payload.TotalRetailPriceRequest{Code: "aaa111", Qty: 15},
-			response: payload.TotalRetailPriceResponse{Total: 194.85},
+			request:  TotalRetailPriceRequest{Code: "aaa111", Qty: 15},
+			response: TotalRetailPriceResponse{Total: 194.85},
 		},
 		{
-			request:  payload.TotalRetailPriceRequest{Code: "fff000", Qty: 10},
-			response: payload.TotalRetailPriceResponse{Err: "Code Not Found"},
+			request:  TotalRetailPriceRequest{Code: "fff000", Qty: 10},
+			response: TotalRetailPriceResponse{Err: "Code Not Found"},
 		},
 	}
 
@@ -157,7 +151,7 @@ func Test_MakeTotalRetailPriceEndpoint(t *testing.T) {
 			log.Fatalf("An Error Occured %v", err)
 		}
 
-		var actualResponse payload.TotalRetailPriceResponse
+		var actualResponse TotalRetailPriceResponse
 		json.NewDecoder(resp.Body).Decode(&actualResponse)
 
 		assert.True(t, test.response.Err == actualResponse.Err, "~2|Test #%d expected error: %s, not error %s~", id, test.response.Err, actualResponse.Err)
@@ -167,24 +161,24 @@ func Test_MakeTotalRetailPriceEndpoint(t *testing.T) {
 
 func Test_MakeTotalWholesalePriceEndpoint(t *testing.T) {
 	tests := []struct {
-		request  payload.TotalWholesalePriceRequest
-		response payload.TotalWholesalePriceResponse
+		request  TotalWholesalePriceRequest
+		response TotalWholesalePriceResponse
 	}{
 		{
-			request:  payload.TotalWholesalePriceRequest{Partner: "", Code: "aaa111", Qty: 0},
-			response: payload.TotalWholesalePriceResponse{Err: "Invalid Partner Requested"},
+			request:  TotalWholesalePriceRequest{Partner: "", Code: "aaa111", Qty: 0},
+			response: TotalWholesalePriceResponse{Err: "Invalid Partner Requested"},
 		},
 		{
-			request:  payload.TotalWholesalePriceRequest{Partner: "superstore", Code: "", Qty: 0},
-			response: payload.TotalWholesalePriceResponse{Err: "Invalid Code Requested"},
+			request:  TotalWholesalePriceRequest{Partner: "superstore", Code: "", Qty: 0},
+			response: TotalWholesalePriceResponse{Err: "Invalid Code Requested"},
 		},
 		{
-			request:  payload.TotalWholesalePriceRequest{Partner: "superstore", Code: "aaa111", Qty: 0},
-			response: payload.TotalWholesalePriceResponse{Err: "Invalid Quantity Requested"},
+			request:  TotalWholesalePriceRequest{Partner: "superstore", Code: "aaa111", Qty: 0},
+			response: TotalWholesalePriceResponse{Err: "Invalid Quantity Requested"},
 		},
 		{
-			request:  payload.TotalWholesalePriceRequest{Partner: "superstore", Code: "aaa111", Qty: 15},
-			response: payload.TotalWholesalePriceResponse{Total: 165.62},
+			request:  TotalWholesalePriceRequest{Partner: "superstore", Code: "aaa111", Qty: 15},
+			response: TotalWholesalePriceResponse{Total: 165.62},
 		},
 	}
 
@@ -208,32 +202,10 @@ func Test_MakeTotalWholesalePriceEndpoint(t *testing.T) {
 			log.Fatalf("An Error Occured %v", err)
 		}
 
-		var actualResponse payload.TotalWholesalePriceResponse
+		var actualResponse TotalWholesalePriceResponse
 		json.NewDecoder(resp.Body).Decode(&actualResponse)
 
 		assert.True(t, test.response.Err == actualResponse.Err, "~2|Test #%d expected error: %s, not error %s~", id, test.response.Err, actualResponse.Err)
 		assert.True(t, test.response.Total == actualResponse.Total, "~2|Test #%d expected total: %.2f, not total %.2f~", id, test.response.Total, actualResponse.Total)
 	}
-}
-
-func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request payload.TotalRetailPriceRequest
-	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, &payload.ErrorResponse{Err: INVALID_REQUEST}
-	}
-
-	return request, nil
-}
-
-func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request payload.TotalWholesalePriceRequest
-	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, &payload.ErrorResponse{Err: INVALID_REQUEST}
-	}
-
-	return request, nil
-}
-
-func encodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
-	return json.NewEncoder(w).Encode(response)
 }

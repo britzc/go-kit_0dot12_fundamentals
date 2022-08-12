@@ -29,18 +29,21 @@ func (ml *MockLogger) Result() string {
 	return strings.Join(ml.result[:], ",")
 }
 
-func Test_LoggingMiddleware(t *testing.T) {
+func Test_LogTotalRetailPriceEndpoint(t *testing.T) {
 	tests := []struct {
-		method   string
+		service  string
+		request  TotalRetailPriceRequest
 		expected string
 	}{
 		{
-			method:   "function15",
-			expected: "method,function15,msg,called endpoint",
+			service:  "endpointRetailTest",
+			request:  TotalRetailPriceRequest{"aaa11", 10},
+			expected: "service,endpointRetailTest,endpoint,TotalRetailPriceEndpoint,msg,Called endpoint",
 		},
 		{
-			method:   "function55",
-			expected: "method,function55,msg,called endpoint",
+			service:  "endpointRetailTest",
+			request:  TotalRetailPriceRequest{"bbb11", 20},
+			expected: "service,endpointRetailTest,endpoint,TotalRetailPriceEndpoint,msg,Called endpoint",
 		},
 	}
 
@@ -51,9 +54,44 @@ func Test_LoggingMiddleware(t *testing.T) {
 	logger := &MockLogger{}
 
 	for id, test := range tests {
-		lmw := LoggingMiddleware(log.With(logger, "method", test.method))(endpoint)
+		lmw := LogTotalRetailPriceEndpoint(log.With(logger, "service", test.service))(endpoint)
 
-		lmw(context.Background(), "Go kit!")
+		lmw(context.Background(), test.request)
+
+		actual := logger.Result()
+
+		assert.True(t, test.expected == actual, "~2|Test #%d logger expected: \"%s\", not: \"%s\"~", id, test.expected, actual)
+	}
+}
+
+func Test_LogTotalWholesalePriceEndpoint(t *testing.T) {
+	tests := []struct {
+		service  string
+		request  TotalWholesalePriceRequest
+		expected string
+	}{
+		{
+			service:  "endpointWholesaleTest",
+			request:  TotalWholesalePriceRequest{"testpartner", "aaa11", 10},
+			expected: "service,endpointWholesaleTest,endpoint,TotalWholesalePriceEndpoint,msg,Called endpoint",
+		},
+		{
+			service:  "endpointWholesaleTest",
+			request:  TotalWholesalePriceRequest{"testpartner", "bbb11", 20},
+			expected: "service,endpointWholesaleTest,endpoint,TotalWholesalePriceEndpoint,msg,Called endpoint",
+		},
+	}
+
+	endpoint := func(_ context.Context, request interface{}) (interface{}, error) {
+		return request, nil
+	}
+
+	logger := &MockLogger{}
+
+	for id, test := range tests {
+		lmw := LogTotalWholesalePriceEndpoint(log.With(logger, "service", test.service))(endpoint)
+
+		lmw(context.Background(), test.request)
 
 		actual := logger.Result()
 
