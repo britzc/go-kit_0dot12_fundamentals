@@ -12,6 +12,8 @@ import (
 	"github.com/gorilla/mux"
 
 	"github.com/go-kit/kit/log"
+	kitprometheus "github.com/go-kit/kit/metrics/prometheus"
+	stdprometheus "github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
@@ -31,8 +33,24 @@ func main() {
 
 	fmt.Println("Endpoints and handlers: In progress")
 
+	fieldKeys := []string{"method", "error"}
+	requestCount := kitprometheus.NewCounterFrom(stdprometheus.CounterOpts{
+		Namespace: "gokitfundamentals",
+		Subsystem: "pricing_service",
+		Name:      "request_count",
+		Help:      "Number of request received.",
+	}, fieldKeys)
+	requestLatency := kitprometheus.NewSummaryFrom(stdprometheus.SummaryOpts{
+		Namespace: "gokitfundamentals",
+		Subsystem: "pricing_service",
+		Name:      "request_latency",
+		Help:      "Total duration of requests.",
+	}, fieldKeys)
+
 	var svc service.PricingService
 	svc = service.NewPricingService(productRepo)
+	svc = service.NewLoggingMiddleware(logger, svc)
+	svc = service.NewInstrumentingMiddleware(requestCount, requestLatency, svc)
 
 	rtr := mux.NewRouter().StrictSlash(true)
 
