@@ -1,56 +1,39 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 
-	"github.com/britzc/go-kit_0dot12_fundamentals/current/repo"
 	"github.com/britzc/go-kit_0dot12_fundamentals/current/service"
 	"github.com/britzc/go-kit_0dot12_fundamentals/current/transport"
 	"github.com/gorilla/mux"
 
 	"github.com/go-kit/kit/log"
-	kitprometheus "github.com/go-kit/kit/metrics/prometheus"
-	stdprometheus "github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
 	var (
 		listen = flag.String("listen", ":8080", "HTTP listen address")
+		proxy  = flag.String("proxy", "localhost:8081,localhost:8082,localhost:8083", "List of URLs to proxy pricing requests")
 	)
 	flag.Parse()
 
+	proxyList := strings.Split(*proxy, ",")
+	for i := range proxyList {
+		proxyList[i] = strings.TrimSpace(proxyList[i])
+	}
+
 	logger := log.NewLogfmtLogger(os.Stderr)
-
-	fmt.Println("Repository: In progress")
-
-	productRepo, _ := repo.NewProductRepo("products.csv", "partners.csv")
-
-	fmt.Println("Repository: Ready")
 
 	fmt.Println("Endpoints and handlers: In progress")
 
-	fieldKeys := []string{"method", "error"}
-	requestCount := kitprometheus.NewCounterFrom(stdprometheus.CounterOpts{
-		Namespace: "gokitfundamentals",
-		Subsystem: "pricing_service",
-		Name:      "request_count",
-		Help:      "Number of request received.",
-	}, fieldKeys)
-	requestLatency := kitprometheus.NewSummaryFrom(stdprometheus.SummaryOpts{
-		Namespace: "gokitfundamentals",
-		Subsystem: "pricing_service",
-		Name:      "request_latency",
-		Help:      "Total duration of requests.",
-	}, fieldKeys)
-
 	var svc service.PricingService
-	svc = service.NewPricingService(productRepo)
-	svc = service.NewLoggingMiddleware(logger, svc)
-	svc = service.NewInstrumentingMiddleware(requestCount, requestLatency, svc)
+	svc = transport.NewPricingServiceProxy(context.Background(), proxyList, logger)
 
 	rtr := mux.NewRouter().StrictSlash(true)
 

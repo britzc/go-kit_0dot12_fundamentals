@@ -3,7 +3,7 @@ import re
 import subprocess
 import sys
 
-process = subprocess.Popen(['go', 'test', '-failfast', '-timeout', '1s'],
+process = subprocess.Popen(['go', 'test', './...', '-timeout', '1s'],
                      stdout=subprocess.PIPE,
                      stderr=subprocess.PIPE)
 stdout, stderr = process.communicate()
