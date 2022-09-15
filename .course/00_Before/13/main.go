@@ -49,8 +49,8 @@ func main() {
 
 	var svc service.PricingService
 	svc = service.NewPricingService(productRepo)
-	svc = service.NewLoggingMiddleware(logger, svc)
 	svc = service.NewInstrumentingMiddleware(requestCount, requestLatency, svc)
+	svc = service.NewLoggingMiddleware(logger, svc)
 
 	rtr := mux.NewRouter().StrictSlash(true)
 

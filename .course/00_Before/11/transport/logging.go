@@ -13,6 +13,8 @@ func LogTotalRetailPriceEndpoint(logger log.Logger) endpoint.Middleware {
 			logger.Log("endpoint", "TotalRetailPriceEndpoint", "msg", "Calling endpoint")
 			defer logger.Log("endpoint", "TotalRetailPriceEndpoint", "msg", "Called endpoint")
 
+			// diagnostic functionality
+
 			return next(ctx, request)
 		}
 	}
