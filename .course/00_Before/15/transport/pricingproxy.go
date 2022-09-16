@@ -23,29 +23,8 @@ const (
 )
 
 func NewPricingServiceProxy(ctx context.Context, instanceList []string, logger log.Logger) PricingService {
-	/*
-		var (
-			qps         = 100
-			maxAttempts = 3
-			maxTime     = 250 * time.Millisecond
-		)
-	*/
-
 	getRetailTotal := makeEndpoint(ctx, instanceList, makeRetailTotalProxy)
 	getWholesaleTotal := makeEndpoint(ctx, instanceList, makeWholesaleTotalProxy)
-	/*
-		var endpointer sd.FixedEndpointer
-		for _, instance := range instanceList {
-			var e endpoint.Endpoint
-			e = makeRetailTotalProxy(ctx, instance)
-			e = circuitbreaker.Gobreaker(gobreaker.NewCircuitBreaker(gobreaker.Settings{}))(e)
-			e = ratelimit.NewErroringLimiter(rate.NewLimiter(rate.Every(time.Second), qps))(e)
-			endpointer = append(endpointer, e)
-		}
-
-		balancer := lb.NewRoundRobin(endpointer)
-		getRetailTotal := lb.Retry(maxAttempts, maxTime, balancer)
-	*/
 
 	return proxyMiddleware{ctx, getRetailTotal, getWholesaleTotal}
 }
@@ -76,7 +55,6 @@ func makeRetailTotalProxy(ctx context.Context, instance string) endpoint.Endpoin
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(u)
 
 	return httptransport.NewClient(
 		"POST",
@@ -92,8 +70,6 @@ func makeWholesaleTotalProxy(ctx context.Context, instance string) endpoint.Endp
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println(u)
 
 	return httptransport.NewClient(
 		"POST",
