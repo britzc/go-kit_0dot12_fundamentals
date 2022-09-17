@@ -1,0 +1,1036 @@
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "3b1fcc85ab5b088550240b6682cc4b5c",
+		"SpanID": "2c65241af3d6f285",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "3b1fcc85ab5b088550240b6682cc4b5c",
+		"SpanID": "95aecfa0e30b12a5",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StopTrace",
+	"SpanContext": {
+		"TraceID": "3b1fcc85ab5b088550240b6682cc4b5c",
+		"SpanID": "9507c097d60377be",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "3b1fcc85ab5b088550240b6682cc4b5c",
+		"SpanID": "2c65241af3d6f285",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "3b1fcc85ab5b088550240b6682cc4b5c",
+		"SpanID": "95aecfa0e30b12a5",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "3b1fcc85ab5b088550240b6682cc4b5c",
+		"SpanID": "7bf00235d2519cf3",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "3b1fcc85ab5b088550240b6682cc4b5c",
+		"SpanID": "7bf00235d2519cf3",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.Endpoint",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "35544b1e9eb04226",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "ff74f31ddc675c99",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "517a367badde2fa8",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "ff74f31ddc675c99",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "707f5d0fa409059d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "ff74f31ddc675c99",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StopTrace",
+	"SpanContext": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "80809af5fd5ae8ca",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "707f5d0fa409059d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "ff74f31ddc675c99",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "d033f9f63d412121",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 3,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "f601056cf6629ddb0595f8e4589e259b",
+		"SpanID": "d033f9f63d412121",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.Endpoint",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "14d03dd30cf45910",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "05734f302e33015d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "3ecde701c8750c76",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "05734f302e33015d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "a48e0cca51ba0cd2",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "05734f302e33015d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StopTrace",
+	"SpanContext": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "60a7d3990b4d5c82",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "a48e0cca51ba0cd2",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "05734f302e33015d",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "5dc806920e48bb66",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 3,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "574f3ef544770b556a164cf3bb51ddcc",
+		"SpanID": "5dc806920e48bb66",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.Endpoint",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "200cff414801a8ad",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "3e1f30f3320d50c8",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "ae88ca17ef3089d8",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "3e1f30f3320d50c8",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "251e3cdc359a15ff",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "3e1f30f3320d50c8",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StopTrace",
+	"SpanContext": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "c044850b0e458918",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "251e3cdc359a15ff",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "3e1f30f3320d50c8",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "7f186546dedfcd77",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 3,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "9d61bef41424455abd6da9a680c2f348",
+		"SpanID": "7f186546dedfcd77",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.Endpoint",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "70e1d5aa761090dc",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "fcc40db66258e1ca",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "9c431d9431f6cd97",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "fcc40db66258e1ca",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "cf8a62aeecdd78e3",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "fcc40db66258e1ca",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StopTrace",
+	"SpanContext": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "964400b834d180db",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "cf8a62aeecdd78e3",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "fcc40db66258e1ca",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "adaf3bf9471802bf",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 3,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "c587317a6053588fadc18098f529e9bc",
+		"SpanID": "adaf3bf9471802bf",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.Endpoint",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
