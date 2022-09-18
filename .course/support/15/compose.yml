@@ -1,0 +1,54 @@
+networks:
+  gokit:
+
+services:
+  # prometheus:
+  #   image: prom/prometheus
+  #   volumes:
+  #     - ./prometheus-config.yml:/etc/prometheus/prometheus-config.yml
+  #   command:
+  #     - "--config.file=/etc/prometheus/prometheus-config.yml"
+  #     - "--storage.tsdb.path=/prometheus"
+  #   ports:
+  #     - 9090:9090
+  #   networks:
+  #     - gokit
+
+  # grafana:
+  #   image: grafana/grafana-enterprise
+  #   ports:
+  #     - 3000:3000
+  #   networks:
+  #     - gokit
+
+  priceapi:
+    build: 
+      context: priceapi
+    ports: 
+      - 8080:8080
+    networks:
+      - gokit
+
+  priceservice01:
+    build: 
+      context: priceservice
+    ports: 
+      - 8081:8080
+    networks:
+      - gokit
+
+  priceservice02:
+    build: 
+      context: priceservice
+    ports: 
+      - 8082:8080
+    networks:
+      - gokit
+
+  priceservice03:
+    build: 
+      context: priceservice
+    ports: 
+      - 8083:8080
+    networks:
+      - gokit

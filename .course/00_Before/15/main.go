@@ -19,7 +19,7 @@ import (
 func main() {
 	var (
 		listen = flag.String("listen", ":8080", "HTTP listen address")
-		proxy  = flag.String("proxy", "localhost:8081,localhost:8082,localhost:8083", "List of URLs to proxy pricing requests")
+		proxy  = flag.String("proxy", "priceservice01:8080,priceservice02:8080,priceservice03:8080", "List of URLs to proxy pricing requests")
 	)
 	flag.Parse()
 
