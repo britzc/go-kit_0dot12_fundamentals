@@ -28,7 +28,7 @@ def main(argv):
 
     print(f'Setting up module {module} in "current" directory')
 
-    src = f'.course/00_before/{module}' 
+    src = f'.course/00_Before/{module}' 
     dest = 'current'
 
     if os.path.exists(dest) and os.path.isdir(dest):
