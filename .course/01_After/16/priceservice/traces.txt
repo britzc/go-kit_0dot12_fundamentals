@@ -1,0 +1,222 @@
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "03dd7975c7a225df6db767aac8a65c20",
+		"SpanID": "d015a94e901a8f10",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2022-09-17T14:17:49.478007+12:00",
+	"EndTime": "2022-09-17T14:17:49.478059791+12:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "03dd7975c7a225df6db767aac8a65c20",
+		"SpanID": "099a9b484507b6ab",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "03dd7975c7a225df6db767aac8a65c20",
+		"SpanID": "a60d74f43c895615",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2022-09-17T14:17:49.478345+12:00",
+	"EndTime": "2022-09-17T14:17:49.4783465+12:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Service.Service",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "03dd7975c7a225df6db767aac8a65c20",
+		"SpanID": "a60d74f43c895615",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "03dd7975c7a225df6db767aac8a65c20",
+		"SpanID": "d015a94e901a8f10",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2022-09-17T14:17:49.478216+12:00",
+	"EndTime": "2022-09-17T14:17:49.4784195+12:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.Endpoint",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "StartTrace",
+	"SpanContext": {
+		"TraceID": "c2eaac6e748b60f39024de31a0ee6821",
+		"SpanID": "d9ff54560a28cbc0",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2022-09-17T14:18:27.314156+12:00",
+	"EndTime": "2022-09-17T14:18:27.314160375+12:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.PricingProxy",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "c2eaac6e748b60f39024de31a0ee6821",
+		"SpanID": "a2441c2ec6be1e84",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c2eaac6e748b60f39024de31a0ee6821",
+		"SpanID": "83a704f85d43fef4",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2022-09-17T14:18:27.314215+12:00",
+	"EndTime": "2022-09-17T14:18:27.314216625+12:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Service.Service",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "GetRetailTotal",
+	"SpanContext": {
+		"TraceID": "c2eaac6e748b60f39024de31a0ee6821",
+		"SpanID": "83a704f85d43fef4",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "c2eaac6e748b60f39024de31a0ee6821",
+		"SpanID": "d9ff54560a28cbc0",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2022-09-17T14:18:27.314212+12:00",
+	"EndTime": "2022-09-17T14:18:27.314251666+12:00",
+	"Attributes": null,
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": null,
+	"InstrumentationLibrary": {
+		"Name": "Transport.Endpoint",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
