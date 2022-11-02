@@ -58,6 +58,17 @@ func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interfac
 
 // WHOLESALE OBJECTS & HANDLERS
 
+type totalWholesalePriceRequest struct {
+	Partner string `json:"partner"`
+	Code    string `json:"code"`
+	Qty     int    `json:"qty"`
+}
+
+type totalWholesalePriceResponse struct {
+	Total float64 `json:"total"`
+	Err   string  `json:"err,omitempty"`
+}
+
 // GENERIC OBJECTS & HANDLERS
 
 func encodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {

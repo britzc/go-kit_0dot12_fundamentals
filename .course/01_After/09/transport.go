@@ -69,8 +69,6 @@ type totalWholesalePriceResponse struct {
 	Err   string  `json:"err,omitempty"`
 }
 
-<<<<<<< HEAD
-=======
 func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	var request totalWholesalePriceRequest
 	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
@@ -80,15 +78,14 @@ func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (inter
 	return request, nil
 }
 
-// func MakeTotalWholesalePriceHttpHandler(pricingService PricingService) *httptransport.Server {
-// 	return httptransport.NewServer(
-// 		MakeTotalWholesalePriceEndpoint(pricingService),
-// 		decodeTotalWholesalePriceRequest,
-// 		encodeResponse,
-// 	)
-// }
+func MakeTotalWholesalePriceHttpHandler(pricingService PricingService) *httptransport.Server {
+	return httptransport.NewServer(
+		MakeTotalWholesalePriceEndpoint(pricingService),
+		decodeTotalWholesalePriceRequest,
+		encodeResponse,
+	)
+}
 
->>>>>>> c3d1822cb45983a78c3b60edc34931d376136d1f
 // GENERIC OBJECTS & HANDLERS
 
 func encodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {

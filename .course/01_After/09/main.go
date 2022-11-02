@@ -10,9 +10,7 @@ import (
 )
 
 func main() {
-	var (
-		listen = flag.String("listen", ":8080", "HTTP listen address")
-	)
+	listen := flag.String("listen", ":8080", "HTTP listen address")
 	flag.Parse()
 
 	fmt.Println("Repository: In progress")
@@ -32,12 +30,9 @@ func main() {
 
 	totalRetailPriceHandler := MakeTotalRetailPriceHttpHandler(pricingService)
 	rtr.Handle("/retail", totalRetailPriceHandler).Methods(http.MethodPost)
-<<<<<<< HEAD
-=======
 
-	// totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(pricingService)
-	// rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods("POST")
->>>>>>> c3d1822cb45983a78c3b60edc34931d376136d1f
+	totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(pricingService)
+	rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods("POST")
 
 	fmt.Println("Endpoints and handlers: Ready")
 
