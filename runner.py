@@ -15,13 +15,13 @@ if stderr:
     print(f"Hmm, it looks like there is an error in `{filename}` on line `{line}`: {message.strip()} <fail>")
 
 if stdout:
-    failed = re.compile("(?:\w+\.go:\d+|Messages):\s*~\d+\|(.*)~", re.MULTILINE)
-    failed_match = failed.search(stdout.decode("utf-8"))
+    r = re.compile("(?:\w+\.go:\d+|Messages):\s*~\d+\|(.*)~", re.MULTILINE)
+    result = r.search(stdout.decode("utf-8"))
 
-    if failed_match:
-        message = failed_match.group(1)
+    if result:
+        message = result.group(1)
         print(f"{message} <fail>")
 
-    if re.search("PASS", stdout.decode("utf-8")):
+    if result == None:
         print(f"Well Done! <pass>")
 
