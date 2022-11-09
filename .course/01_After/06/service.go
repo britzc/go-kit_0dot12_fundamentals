@@ -54,7 +54,7 @@ saved = (price x discount)
 total = (price - saved) x quantity
 */
 
-func (ps *service) GetWholesaleTotal(partner, code string, qty int) (total float64, err error) {
+func (ps *service) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) {
 	if partner == "" {
 		return 0.0, ErrInvalidPartner
 	}

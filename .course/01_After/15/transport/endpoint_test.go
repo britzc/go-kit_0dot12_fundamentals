@@ -52,7 +52,7 @@ func (MockPricingService) GetRetailTotal(code string, qty int) (total float64, e
 	return 0.0, ErrCodeNotFound
 }
 
-func (MockPricingService) GetWholesaleTotal(partner, code string, qty int) (total float64, err error) {
+func (MockPricingService) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) {
 	if partner == "" {
 		return 0.0, ErrInvalidPartner
 	}

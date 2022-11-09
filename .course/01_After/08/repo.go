@@ -21,7 +21,7 @@ type productRepo struct {
 	partners map[string]*partner
 }
 
-func NewProductRepo(productsPath, partnersPath string) (pr *productRepo, err error) {
+func NewProductRepo(productsPath string, partnersPath string) (pr *productRepo, err error) {
 	productRecords, err := readCSV(productsPath)
 	if err != nil {
 		return nil, err

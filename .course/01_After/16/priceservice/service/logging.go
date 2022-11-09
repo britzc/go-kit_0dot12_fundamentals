@@ -38,7 +38,7 @@ func (mw loggingMiddleware) GetRetailTotal(ctx context.Context, code string, qty
 	return
 }
 
-func (mw loggingMiddleware) GetWholesaleTotal(ctx context.Context, partner, code string, qty int) (total float64, err error) {
+func (mw loggingMiddleware) GetWholesaleTotal(ctx context.Context, partner string, code string, qty int) (total float64, err error) {
 	defer func(begin time.Time) {
 		_ = mw.logger.Log(
 			"method", "GetWholesaleTotal",

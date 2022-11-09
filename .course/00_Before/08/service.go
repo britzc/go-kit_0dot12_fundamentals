@@ -10,11 +10,13 @@ type ProductRepo interface {
 	FetchDiscount(partner string) (discount float64, found bool)
 }
 
-var ErrInvalidPartner = errors.New("Invalid Partner Requested")
-var ErrPartnerNotFound = errors.New("Partner Not Found")
-var ErrInvalidCode = errors.New("Invalid Code Requested")
-var ErrCodeNotFound = errors.New("Code Not Found")
-var ErrInvalidQty = errors.New("Invalid Quantity Requested")
+var (
+	ErrInvalidPartner  = errors.New("Invalid Partner Requested")
+	ErrPartnerNotFound = errors.New("Partner Not Found")
+	ErrInvalidCode     = errors.New("Invalid Code Requested")
+	ErrCodeNotFound    = errors.New("Code Not Found")
+	ErrInvalidQty      = errors.New("Invalid Quantity Requested")
+)
 
 type service struct {
 	repo ProductRepo
@@ -52,7 +54,7 @@ saved = (price x discount)
 total = (price - saved) x quantity
 */
 
-func (ps *service) GetWholesaleTotal(partner, code string, qty int) (total float64, err error) {
+func (ps *service) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) {
 	if partner == "" {
 		return 0.0, ErrInvalidPartner
 	}

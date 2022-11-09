@@ -59,7 +59,7 @@ func (ps *pricingService) GetRetailTotal(ctx context.Context, code string, qty i
 	return math.Round(total*100) / 100, nil
 }
 
-func (ps *pricingService) GetWholesaleTotal(ctx context.Context, partner, code string, qty int) (total float64, err error) {
+func (ps *pricingService) GetWholesaleTotal(ctx context.Context, partner string, code string, qty int) (total float64, err error) {
 	ctx, span := otel.Tracer("Service.Service").Start(ctx, "GetWholesaleTotal")
 	defer span.End()
 

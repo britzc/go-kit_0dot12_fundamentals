@@ -57,7 +57,7 @@ func (MockPricingService) GetRetailTotal(code string, qty int) (total float64, e
 	return 0.0, ErrCodeNotFound
 }
 
-func (MockPricingService) GetWholesaleTotal(partner, code string, qty int) (total float64, err error) {
+func (MockPricingService) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) {
 	if partner == "" {
 		return 0.0, ErrInvalidPartner
 	}
@@ -143,7 +143,6 @@ func Test_Logging_GetRetailTotal(t *testing.T) {
 
 		assert.True(t, strings.HasPrefix(actual, test.msg), "~2|Test #%d logger expected: \"%s\", not: \"%s\"~", id, test.msg, actual)
 	}
-
 }
 
 func Test_Logging_GetWholesaleTotal(t *testing.T) {
@@ -180,5 +179,4 @@ func Test_Logging_GetWholesaleTotal(t *testing.T) {
 		assert.True(t, strings.HasPrefix(actual, test.msg), "~2|Test #%d logging expected: \"%s\", not: \"%s\"~", id, test.msg, actual)
 
 	}
-
 }

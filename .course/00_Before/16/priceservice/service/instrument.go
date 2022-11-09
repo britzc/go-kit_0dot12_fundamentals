@@ -37,7 +37,7 @@ func (mw instrumentingMiddleware) GetRetailTotal(ctx context.Context, code strin
 	return
 }
 
-func (mw instrumentingMiddleware) GetWholesaleTotal(ctx context.Context, partner, code string, qty int) (total float64, err error) {
+func (mw instrumentingMiddleware) GetWholesaleTotal(ctx context.Context, partner string, code string, qty int) (total float64, err error) {
 	defer func(begin time.Time) {
 		lvs := []string{"method", "GetRetailTotal", "error", fmt.Sprint(err != nil)}
 
