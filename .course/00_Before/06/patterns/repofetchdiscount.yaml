@@ -1,0 +1,12 @@
+rules:
+  - id: repofetchdiscount
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern-either:
+      - pattern: |
+          discount, found := ps.repo.FetchDiscount(partner)
+          if !found {
+            return 0.0, ErrPartnerNotFound
+          }

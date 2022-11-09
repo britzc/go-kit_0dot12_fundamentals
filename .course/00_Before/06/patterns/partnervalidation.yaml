@@ -1,0 +1,15 @@
+rules:
+  - id: partnervalidation
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern-either:
+      - pattern: |
+          if partner == "" {
+            return 0.0, ErrInvalidPartner
+          }
+      - pattern: |
+          if len(partner) == 0 {
+            return 0.0, ErrInvalidPartner
+          }
