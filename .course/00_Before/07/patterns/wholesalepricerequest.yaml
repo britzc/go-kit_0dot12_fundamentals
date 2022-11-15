@@ -1,0 +1,14 @@
+rules:
+  - id: wholesalepricerequest
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern-either:
+      - pattern: |
+          type totalWholesalePriceRequest struct {
+            Partner string `json:"partner"`
+            Code    string `json:"code"`
+            Qty     int    `json:"qty"`
+          }
+

@@ -1,0 +1,13 @@
+rules:
+  - id: wholesalepriceresponse
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern-either:
+      - pattern: |
+          type totalWholesalePriceResponse struct {
+            Total float64 `json:"total"`
+            Err   string  `json:"err,omitempty"`
+          }
+
