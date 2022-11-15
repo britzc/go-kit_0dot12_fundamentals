@@ -1,0 +1,13 @@
+rules:
+  - id: pricingservicecheck
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern-either:
+      - pattern: |
+          type PricingService interface {
+            GetRetailTotal(code string, qty int) (total float64, err error)
+            GetWholesaleTotal(partner string, code string, qty int) (total float64, err error)
+          }
+

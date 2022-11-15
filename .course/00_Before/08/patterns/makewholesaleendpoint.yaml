@@ -1,0 +1,10 @@
+rules:
+  - id: makewholesaleendpoint
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern-either:
+      - pattern: |
+          func MakeTotalWholesalePriceEndpoint(ps PricingService) endpoint.Endpoint
+

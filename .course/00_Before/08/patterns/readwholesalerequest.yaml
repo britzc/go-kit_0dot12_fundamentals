@@ -1,0 +1,10 @@
+rules:
+  - id: readwholesalerequest
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    patterns:
+      - pattern: |
+          req := request.(totalWholesalePriceRequest)
+

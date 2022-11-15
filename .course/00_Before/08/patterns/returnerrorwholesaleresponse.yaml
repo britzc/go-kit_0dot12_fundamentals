@@ -1,0 +1,8 @@
+rules:
+  - id: returnerrorwholesaleresponse
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: return totalWholesalePriceResponse{0.0, err.Error()}, nil
+

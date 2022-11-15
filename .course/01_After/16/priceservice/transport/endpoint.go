@@ -20,7 +20,7 @@ func MakeTotalRetailPriceEndpoint(svc PricingService) endpoint.Endpoint {
 		req := request.(TotalRetailPriceRequest)
 		total, err := svc.GetRetailTotal(ctx, req.Code, req.Qty)
 		if err != nil {
-			return TotalRetailPriceResponse{total, err.Error()}, nil
+			return TotalRetailPriceResponse{0.0, err.Error()}, nil
 		}
 
 		return TotalRetailPriceResponse{total, ""}, nil
@@ -35,7 +35,7 @@ func MakeTotalWholesalePriceEndpoint(svc PricingService) endpoint.Endpoint {
 		req := request.(TotalWholesalePriceRequest)
 		total, err := svc.GetWholesaleTotal(ctx, req.Partner, req.Code, req.Qty)
 		if err != nil {
-			return TotalWholesalePriceResponse{total, err.Error()}, nil
+			return TotalWholesalePriceResponse{0.0, err.Error()}, nil
 		}
 
 		return TotalWholesalePriceResponse{total, ""}, nil

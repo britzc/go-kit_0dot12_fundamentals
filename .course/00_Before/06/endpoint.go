@@ -15,10 +15,9 @@ func MakeTotalRetailPriceEndpoint(ps PricingService) endpoint.Endpoint {
 		req := request.(totalRetailPriceRequest)
 		total, err := ps.GetRetailTotal(req.Code, req.Qty)
 		if err != nil {
-			return totalRetailPriceResponse{total, err.Error()}, nil
+			return totalRetailPriceResponse{0.0, err.Error()}, nil
 		}
 
 		return totalRetailPriceResponse{total, ""}, nil
 	}
-
 }

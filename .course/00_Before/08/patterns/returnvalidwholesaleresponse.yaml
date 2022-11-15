@@ -1,0 +1,8 @@
+rules:
+  - id: returnvalidwholesaleresponse
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: return totalWholesalePriceResponse{total, ""}, nil
+
