@@ -4,5 +4,5 @@ rules:
     severity: INFO
     languages:
       - go
-    pattern: func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) { ... }
+    pattern: func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) { ... }
 
