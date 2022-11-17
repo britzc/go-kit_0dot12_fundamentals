@@ -8,7 +8,7 @@ rules:
       - pattern: |
           defer func(begin time.Time) {
               _ = mw.logger.Log(
-                "method", "GetRetailTotal",
+                "method", "GetWholesaleTotal",
                 "partner", partner,
                 "code", code,
                 "quantity", qty,
