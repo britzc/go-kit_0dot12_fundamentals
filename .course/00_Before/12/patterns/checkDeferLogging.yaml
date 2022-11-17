@@ -1,0 +1,20 @@
+rules:
+  - id: checkNextCall
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    patterns:
+      - pattern: |
+          defer func(begin time.Time) {
+              _ = mw.logger.Log(
+                "method", "GetRetailTotal",
+                "partner", partner,
+                "code", code,
+                "quantity", qty,
+                "total", total,
+                "error", err,
+                "duration", time.Since(begin),
+              )
+            }(time.Now())
+      - pattern-inside: func (mw loggingMiddleware) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) { ... }
