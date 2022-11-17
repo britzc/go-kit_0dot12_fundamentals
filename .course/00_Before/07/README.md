@@ -2,7 +2,7 @@
 
 In this exercise you are required to implement the Request / Response structures, in order to interact with the new service functionality.
 
-## Your would be required to:
+## You would be required to:
 * Create the WholesalePriceRequest object, adding the "partner" field
 * Create the WholesalePriceResponse object, similar to the Retail item
 

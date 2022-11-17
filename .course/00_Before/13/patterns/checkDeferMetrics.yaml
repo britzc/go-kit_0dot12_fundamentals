@@ -1,0 +1,15 @@
+rules:
+  - id: checkDeferMetrics
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    patterns:
+      - pattern: |
+          defer func(begin time.Time) {
+              lvs := []string{"method", "GetWholesaleTotal", "error", fmt.Sprint(err != nil)}
+
+              mw.requestCount.With(lvs...).Add(1)
+              mw.requestLatency.With(lvs...).Observe(time.Since(begin).Seconds())
+          }(time.Now())
+      - pattern-inside: func (mw instrumentingMiddleware) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) { ... }

@@ -6,4 +6,4 @@ rules:
       - go
     patterns:
       - pattern: total, err = mw.next.GetWholesaleTotal(partner, code, qty)
-      - pattern-inside: func (mw loggingMiddleware) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) { ... }
+      - pattern-inside: func (mw instrumentingMiddleware) GetWholesaleTotal(partner string, code string, qty int) (total float64, err error) { ... }
