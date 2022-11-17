@@ -1,0 +1,8 @@
+rules:
+  - id: checkLoggingInHttpHandler
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: wholesaleEndpoint = LogTotalWholesalePriceEndpoint(log.With(logger, "service", "PricingService"))(wholesaleEndpoint)
+
