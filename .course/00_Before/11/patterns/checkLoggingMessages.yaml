@@ -1,0 +1,9 @@
+rules:
+  - id: checkLoggingMessages
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: |
+      logger.Log("endpoint", "TotalWholesalePriceEndpoint", "msg", "Calling endpoint")
+      defer logger.Log("endpoint", "TotalWholesalePriceEndpoint", "msg", "Called endpoint")

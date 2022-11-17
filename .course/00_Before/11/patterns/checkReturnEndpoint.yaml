@@ -1,0 +1,9 @@
+rules:
+  - id: checkReturnEndpoint
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    patterns:
+      - pattern: return func(next endpoint.Endpoint) endpoint.Endpoint { ... }
+      - pattern-inside: func LogTotalWholesalePriceEndpoint(logger log.Logger) endpoint.Middleware { ... }

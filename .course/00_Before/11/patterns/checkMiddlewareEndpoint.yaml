@@ -1,0 +1,8 @@
+rules:
+  - id: checkMiddlewareEndpoint
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: func LogTotalWholesalePriceEndpoint(logger log.Logger) endpoint.Middleware { ... }
+

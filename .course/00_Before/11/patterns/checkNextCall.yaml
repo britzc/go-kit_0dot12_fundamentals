@@ -1,0 +1,9 @@
+rules:
+  - id: checkNextCall
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    patterns:
+      - pattern: return next(ctx, request)
+      - pattern-inside: func LogTotalWholesalePriceEndpoint(logger log.Logger) endpoint.Middleware { ... }

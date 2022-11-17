@@ -1,8 +1,11 @@
 rules:
-  - id: decodewholerequest
+  - id: decodeWholesaleRequest
     message: "<pass>"
     severity: INFO
     languages:
       - go
-    pattern: var request totalWholesalePriceRequest
+    patterns:
+      - pattern: var request totalWholesalePriceRequest
+      - pattern-inside: func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) { ... }
+
 

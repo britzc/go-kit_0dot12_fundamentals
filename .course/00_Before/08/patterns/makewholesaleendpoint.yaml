@@ -6,5 +6,5 @@ rules:
       - go
     pattern-either:
       - pattern: |
-          func MakeTotalWholesalePriceEndpoint(ps PricingService) endpoint.Endpoint
+          func MakeTotalWholesalePriceEndpoint(ps PricingService) endpoint.Endpoint { ... }
 
