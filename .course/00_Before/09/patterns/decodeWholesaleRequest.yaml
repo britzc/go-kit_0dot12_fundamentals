@@ -6,6 +6,6 @@ rules:
       - go
     patterns:
       - pattern: var request totalWholesalePriceRequest
-      - pattern-inside: func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interface{}, error) { ... }
+      - pattern-inside: func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) { ... }
 
 
