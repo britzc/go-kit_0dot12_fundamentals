@@ -1,0 +1,13 @@
+rules:
+  - id: makehttpserver
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: |
+      return httptransport.NewServer(
+        MakeTotalWholesalePriceEndpoint(pricingService),
+        decodeTotalWholesalePriceRequest,
+        encodeResponse,
+      )
+

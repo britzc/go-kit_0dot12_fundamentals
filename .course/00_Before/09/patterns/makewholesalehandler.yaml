@@ -1,0 +1,8 @@
+rules:
+  - id: makewholesaleendpoint
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: func MakeTotalWholesalePriceHttpHandler(pricingService PricingService) *httptransport.Server
+
