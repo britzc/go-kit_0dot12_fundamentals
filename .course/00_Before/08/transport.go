@@ -69,15 +69,6 @@ type totalWholesalePriceResponse struct {
 	Err   string  `json:"err,omitempty"`
 }
 
-func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
-	var request totalWholesalePriceRequest
-	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
-		return nil, &errorResponse{Err: INVALID_REQUEST}
-	}
-
-	return request, nil
-}
-
 // GENERIC OBJECTS & HANDLERS
 
 func encodeResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
