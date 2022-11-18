@@ -2,7 +2,7 @@
 
 In this exercise you are required to implement the MakeTotalWholesalePriceHttpHandler and associated decode/encode functions, in order to communicate over the network.
 
-## You would be required to:
+## You will be required to:
 * Implement a decode function for the wholesale request object, to be used with the handler
 * Ensure that the totalWholesalePriceRequest object is used in the decode function
 * Implement a wholesale price HTTP handler, returning a httptransport.Server
