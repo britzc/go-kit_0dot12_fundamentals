@@ -1,0 +1,10 @@
+rules:
+  - id: includeWholesaleRoute
+    message: "<pass>"
+    severity: INFO
+    languages:
+      - go
+    pattern: |
+      totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(pricingService)
+      rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods("POST")
+

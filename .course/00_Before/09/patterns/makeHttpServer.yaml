@@ -1,5 +1,5 @@
 rules:
-  - id: makehttpserver
+  - id: makeHttpServer
     message: "<pass>"
     severity: INFO
     languages:
