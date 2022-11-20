@@ -7,6 +7,7 @@ In this exercise you are required to implement the MakeTotalWholesalePriceHttpHa
 * Ensure that the totalWholesalePriceRequest object is used in the decode function
 * Implement a wholesale price HTTP handler, returning a httptransport.Server
 * Return the server, ensuring that the wholesale decode and interface function is used
+* Add the wholesale route to the router
 
 ## Important to pass the validation checks:
 * Do not use parameter type sharing
