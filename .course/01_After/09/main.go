@@ -32,7 +32,7 @@ func main() {
 	rtr.Handle("/retail", totalRetailPriceHandler).Methods(http.MethodPost)
 
 	totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(pricingService)
-	rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods("POST")
+	rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods(http.MethodPost)
 
 	fmt.Println("Endpoints and handlers: Ready")
 
