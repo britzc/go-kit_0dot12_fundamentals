@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"log"
 	"math"
@@ -99,6 +100,15 @@ func (MockPricingService) GetWholesaleTotal(partner string, code string, qty int
 	return math.Round(total*100) / 100, nil
 }
 
+func testDecodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var request totalWholesalePriceRequest
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		return nil, &errorResponse{Err: INVALID_REQUEST}
+	}
+
+	return request, nil
+}
+
 func Test_MakeTotalRetailPriceEndpoint(t *testing.T) {
 	tests := []struct {
 		request  totalRetailPriceRequest
@@ -187,7 +197,7 @@ func Test_MakeTotalWholesalePriceEndpoint(t *testing.T) {
 
 	totalWholesalePriceHandler := httptransport.NewServer(
 		MakeTotalWholesalePriceEndpoint(mockPricingService),
-		decodeTotalWholesalePriceRequest,
+		testDecodeTotalWholesalePriceRequest,
 		encodeResponse,
 	)
 
