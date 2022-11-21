@@ -6,5 +6,5 @@ rules:
       - go
     pattern: |
       totalWholesalePriceHandler := MakeTotalWholesalePriceHttpHandler(pricingService)
-      rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods("POST")
+      rtr.Handle("/wholesale", totalWholesalePriceHandler).Methods(http.MethodPost)
 
