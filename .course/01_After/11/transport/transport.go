@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	gkendpoint "github.com/go-kit/kit/endpoint"
+	"github.com/go-kit/kit/endpoint"
 	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/go-kit/log"
 )
@@ -24,7 +24,7 @@ func decodeTotalRetailPriceRequest(_ context.Context, r *http.Request) (interfac
 }
 
 func MakeTotalRetailPriceHttpHandler(logger log.Logger, svc PricingService) *httptransport.Server {
-	var retailEndpoint gkendpoint.Endpoint
+	var retailEndpoint endpoint.Endpoint
 	retailEndpoint = MakeTotalRetailPriceEndpoint(svc)
 	retailEndpoint = LogTotalRetailPriceEndpoint(log.With(logger, "service", "PricingService"))(retailEndpoint)
 
@@ -45,7 +45,7 @@ func decodeTotalWholesalePriceRequest(_ context.Context, r *http.Request) (inter
 }
 
 func MakeTotalWholesalePriceHttpHandler(logger log.Logger, svc PricingService) *httptransport.Server {
-	var wholesaleEndpoint gkendpoint.Endpoint
+	var wholesaleEndpoint endpoint.Endpoint
 	wholesaleEndpoint = MakeTotalWholesalePriceEndpoint(svc)
 	wholesaleEndpoint = LogTotalWholesalePriceEndpoint(log.With(logger, "service", "PricingService"))(wholesaleEndpoint)
 
